@@ -1,0 +1,124 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+    provider        = "prisma-client-js"
+    previewFeatures = []
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+model User {
+    id            String    @id @unique
+    username      String?
+    name          String?
+    emailVerified DateTime?
+
+    email      String       @unique
+    timeZone   String       @default("Europe/Berlin")
+    weekStart  String       @default("Monday")
+    locale     String?
+    timeFormat Int?
+    createdAt  DateTime     @default(now())
+    updatedAt  DateTime     @updatedAt
+    teams      Membership[]
+
+    auth_session     Session[]
+    key              Key[]
+    VerificationCode VerificationCode[]
+
+    @@map(name: "users")
+}
+
+// Lucia related
+model Key {
+    id              String  @id @unique
+    hashed_password String?
+    user_id         String
+    user            User    @relation(references: [id], fields: [user_id], onDelete: Cascade)
+
+    @@index([user_id])
+    @@map(name: "keys")
+}
+
+model Session {
+    id             String @id @unique
+    user_id        String
+    active_expires BigInt
+    idle_expires   BigInt
+
+    user User @relation(references: [id], fields: [user_id], onDelete: Cascade)
+
+    @@index([user_id])
+    @@map(name: "sessions")
+}
+
+model VerificationCode {
+    id      String   @id @unique
+    user_id String
+    code    String
+    expires DateTime
+    user    User     @relation(references: [id], fields: [user_id], onDelete: Cascade)
+
+    @@map(name: "verification_code")
+}
+
+model VerificationToken {
+    id         String   @id @default(cuid())
+    identifier String
+    token      String   @unique
+    expires    DateTime
+    createdAt  DateTime @default(now())
+    updatedAt  DateTime @updatedAt
+
+    @@unique([identifier, token])
+    @@index([token])
+    @@map(name: "verification_tokens")
+}
+
+model ResetPasswordRequest {
+    id        String   @id @default(cuid())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    email     String
+    expires   DateTime
+
+    @@map(name: "reset_password_tokens")
+}
+
+model Team {
+    id        Int          @id @default(autoincrement())
+    name      String
+    slug      String?
+    logo      String?
+    createdAt DateTime     @default(now())
+    updatedAt DateTime     @updatedAt
+    members   Membership[]
+
+    @@unique([slug])
+    @@map(name: "teams")
+}
+
+enum MembershipRole {
+    MEMBER
+    ADMIN
+    OWNER
+}
+
+model Membership {
+    id       Int            @id @default(autoincrement())
+    teamId   Int
+    userId   String
+    accepted Boolean        @default(false)
+    role     MembershipRole
+    team     Team           @relation(fields: [teamId], references: [id], onDelete: Cascade)
+    user     User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    @@unique([userId, teamId])
+    @@index([teamId])
+    @@index([userId])
+    @@map(name: "memberships")
+}

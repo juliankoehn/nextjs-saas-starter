@@ -1,4 +1,16 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<p align="center">
+  <a href="https://nextjs-postgres-auth.vercel.app/">
+    <img src="/public/next.svg" height="96">
+    <h3 align="center">Next.js SaaS Prisma PostgreSQL Auth Starter</h3>
+  </a>
+</p>
+
+
+<p align="center">
+This is a <a href="https://nextjs.org/">Next.js</a> starter kit that uses <a href="https://next-auth.js.org/">Next-Auth</a> for simple email + password login<br/>
+<a href="https://www.prisma.io/">Prisma</a> as the ORM, and a <a href="https://vercel.com/postgres">Vercel Postgres</a> database to persist the data.</p>
+
+<br/>
 
 ## Getting Started
 
