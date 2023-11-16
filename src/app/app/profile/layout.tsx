@@ -32,7 +32,7 @@ const ProfileLayout: NextPage<{
           },
         ]}
       />
-      <div className="mx-auto max-w-7xl py-8">{children}</div>
+      <div className="mx-auto max-w-7xl p-8">{children}</div>
     </div>
   );
 };

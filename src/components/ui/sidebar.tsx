@@ -25,7 +25,7 @@ export const Sidebar: React.FC<SidebarProps> = (props) => {
     <nav
       className={cn(
         "transition-all fixed top-0 left-0 flex flex-col w-16 z-10",
-        "h-[calc(100%-4rem)] mt-16 bg-white shadow overflow-x-hidden will-change-auto",
+        "h-[calc(100%-4rem)] mt-16 bg-background shadow overflow-x-hidden will-change-auto",
         "hover:w-60 group"
       )}
     >

@@ -7,8 +7,8 @@
 
 
 <p align="center">
-This is a <a href="https://nextjs.org/">Next.js</a> starter kit that uses <a href="https://next-auth.js.org/">Next-Auth</a> for simple email + password login<br/>
-<a href="https://www.prisma.io/">Prisma</a> as the ORM, and a <a href="https://vercel.com/postgres">Vercel Postgres</a> database to persist the data.</p>
+This is a <a href="https://nextjs.org/">Next.js</a> starter kit that uses <a href="https://next-auth.js.org/">Lucia</a> for simple email + password login<br/>
+<a href="https://www.prisma.io/">Prisma</a> as the ORM, and a <a href="https://vercel.com/postgres">Prisma</a> database to persist the data.</p>
 
 <br/>
 
@@ -46,3 +46,30 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+## Ziele
+
+### Pricing with Tier https://model.tier.run/edit/clozrz5t2bi90o972kzpmj68v
+
+Was soll das Boilerplate können?
+
+Ziel ist ein metered billing SaaS mit Next.js, Prisma, PostgreSQL und Stripe.
+
+- [x] Authentifizierung
+  - [x] Registrierung
+  - [ ] Passwort vergessen
+  - [ ] Passwort ändern
+  - [ ] Email ändern
+  - [ ] Email bestätigen
+  - [ ] Email verifizieren
+  - [x] Login
+  - [x] Logout
+- [ ] Projekte
+  - [x] Erstellen
+  - [ ] Name ändern
+  - [ ] Mitglieder
+    - [ ] Hinzufügen
+    - [ ] Entfernen
+    - [ ] Einladung Annehmen
+- [ ] Billing

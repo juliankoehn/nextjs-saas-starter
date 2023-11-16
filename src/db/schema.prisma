@@ -66,40 +66,14 @@ model VerificationCode {
     @@map(name: "verification_code")
 }
 
-model VerificationToken {
-    id         String   @id @default(cuid())
-    identifier String
-    token      String   @unique
-    expires    DateTime
-    createdAt  DateTime @default(now())
-    updatedAt  DateTime @updatedAt
-
-    @@unique([identifier, token])
-    @@index([token])
-    @@map(name: "verification_tokens")
-}
-
-model ResetPasswordRequest {
-    id        String   @id @default(cuid())
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
-    email     String
-    expires   DateTime
-
-    @@map(name: "reset_password_tokens")
-}
-
-model Team {
+model Project {
     id        Int          @id @default(autoincrement())
     name      String
-    slug      String?
-    logo      String?
+    members   Membership[]
     createdAt DateTime     @default(now())
     updatedAt DateTime     @updatedAt
-    members   Membership[]
 
-    @@unique([slug])
-    @@map(name: "teams")
+    @@map(name: "projects")
 }
 
 enum MembershipRole {
@@ -109,16 +83,16 @@ enum MembershipRole {
 }
 
 model Membership {
-    id       Int            @id @default(autoincrement())
-    teamId   Int
-    userId   String
-    accepted Boolean        @default(false)
-    role     MembershipRole
-    team     Team           @relation(fields: [teamId], references: [id], onDelete: Cascade)
-    user     User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+    id        Int            @id @default(autoincrement())
+    projectId Int
+    userId    String
+    accepted  Boolean        @default(false)
+    role      MembershipRole
+    user      User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+    project   Project        @relation(fields: [projectId], references: [id], onDelete: Cascade)
 
-    @@unique([userId, teamId])
-    @@index([teamId])
+    @@unique([userId, projectId])
+    @@index([projectId])
     @@index([userId])
     @@map(name: "memberships")
 }

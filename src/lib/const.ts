@@ -1,3 +1,6 @@
+import { TierPlanConstant } from "#/types";
+import { FeatureName, PlanName } from "tier";
+
 const VERCEL_URL = process.env.NEXT_PUBLIC_VERCEL_URL
   ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
   : "";
@@ -19,3 +22,36 @@ export const WEBAPP_URL =
   HEROKU_URL ||
   RENDER_URL ||
   "http://localhost:3000";
+
+export const CP_PREFIX = "/app";
+
+// Plans
+export const TIER_FREE_PLAN_ID = "plan:free@10";
+export const TIER_BUSINESS_PLAN_ID = "plan:business@6";
+export const TIER_PROFESSIONAL_PLAN_ID = "plan:professional@5";
+
+// Features
+export const TIER_BASE_FEATURE_ID = "feature:base";
+export const TIER_SURVEY_FEATURE_ID = "feature:survey";
+export const TIER_USERS_FEATURE_ID = "feature:users";
+
+export const tierPlanConstants: TierPlanConstant[] = [
+  {
+    planId: TIER_FREE_PLAN_ID as PlanName,
+    promoted: false,
+  },
+  {
+    planId: TIER_BUSINESS_PLAN_ID as PlanName,
+    promoted: false,
+  },
+  {
+    planId: TIER_PROFESSIONAL_PLAN_ID as PlanName,
+    promoted: false,
+  },
+];
+
+// Make sure to maintain the order of the (do not include your base price feature in this)
+export const tierFeatureConstants: FeatureName[] = [
+  TIER_SURVEY_FEATURE_ID,
+  TIER_USERS_FEATURE_ID,
+];

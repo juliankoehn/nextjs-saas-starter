@@ -1,17 +1,19 @@
-import { cn } from '#/utils/dom-utils';
-import Link from 'next/link';
-import React from 'react';
+import { CP_PREFIX } from "#/lib/const";
+import { cn } from "#/utils/dom-utils";
+import { Project } from "@prisma/client";
+import Link from "next/link";
+import React from "react";
 
 export interface ProjectCardProps {
-    name: string;
+  project: Project;
 }
 
 export const ProjectCard: React.FC<ProjectCardProps> = (props) => {
-    const { name } = props;
+  const { project } = props;
 
   return (
     <Link
-      href="/app/project_id"
+      href={`${CP_PREFIX}/${project.id}`}
       className={cn(
         "transition-shadow relative grid auto-rows-max grid-flow-row shadow rounded-md",
         "group hover:shadow-lg"
@@ -25,7 +27,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = (props) => {
       >
         <div className="grid items-center gap-3 grid-cols-[1fr_auto]">
           <div className="block truncate max-w-full justify-self-start text-lg text-white">
-            {name}
+            {project.name}
           </div>
         </div>
       </div>

@@ -1,6 +1,8 @@
 import { cn } from "#/utils/dom-utils";
+import { Project } from "@prisma/client";
 import React from "react";
-import { ProjectCard } from './project-card';
+import { NewProjectButton } from "./new-project-button";
+import { ProjectCard } from "./project-card";
 
 /**
  * 
@@ -12,15 +14,25 @@ import { ProjectCard } from './project-card';
 }
  */
 
-export const ProjectGallery: React.FC = () => {
+export interface ProjectGalleryProps {
+  projects: Project[];
+}
+
+export const ProjectGallery: React.FC<ProjectGalleryProps> = (props) => {
+  const { projects } = props;
+
   return (
-    <div className={cn("w-full grid auto-rows-[1fr] gap-6", 
-    "grid-cols-[repeat(auto-fill,minmax(20rem,_1fr))]")}>
-      <ProjectCard name="MCH Short" />
-      <ProjectCard name="julian.pro" />
-      <ProjectCard name="missuellen.de" />
-      <ProjectCard name="bestmed" />
-      <ProjectCard name="Signageful" />
+    <div
+      className={cn(
+        "w-full grid auto-rows-[1fr] gap-6",
+        "grid-cols-[repeat(auto-fill,minmax(20rem,_1fr))]"
+      )}
+    >
+      {projects.map((project) => (
+        <ProjectCard key={project.id} project={project} />
+      ))}
+
+      <NewProjectButton />
     </div>
   );
 };

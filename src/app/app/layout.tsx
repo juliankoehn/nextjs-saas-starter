@@ -3,6 +3,7 @@ import { getPageSession } from "#/lib/auth/lucia";
 import { NextPage } from "next";
 import { redirect } from "next/navigation";
 import { Topbar } from "./_components/topbar";
+import Providers from "./providers";
 
 const AppLayout: NextPage<{
   children: React.ReactNode;
@@ -15,6 +16,7 @@ const AppLayout: NextPage<{
 
   return (
     <>
+      <Providers />
       <Topbar />
       <div className="block pt-16">{children}</div>
       <Toaster />

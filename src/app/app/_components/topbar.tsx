@@ -9,8 +9,8 @@ export const Topbar: React.FC = () => {
   return (
     <div
       className={cn(
-        "fixed top-0 left-0 flex gap-5 items-center px-6",
-        "w-screen h-16 bg-white shadow z-10 justify-between"
+        "fixed top-0 left-0 flex gap-5 items-center px-6 z-20",
+        "w-screen h-16 bg-background shadow z-10 justify-between"
       )}
     >
       <Link href="/app">
