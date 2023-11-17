@@ -1,15 +1,13 @@
 import { getPageSession } from "../auth/lucia";
 import { db } from "../db";
 
-export const getProject = async (projectId: number | string) => {
+export const getProject = async (projectId: string) => {
   const session = await getPageSession();
   if (!session) return null;
 
-  const id = typeof projectId === "number" ? projectId : parseInt(projectId);
-
   const project = await db.project.findUnique({
     where: {
-      id,
+      id: projectId,
       members: {
         some: {
           userId: session.userId,

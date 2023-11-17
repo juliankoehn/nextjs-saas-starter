@@ -26,9 +26,10 @@ model User {
     updatedAt  DateTime     @updatedAt
     teams      Membership[]
 
-    auth_session     Session[]
-    key              Key[]
-    VerificationCode VerificationCode[]
+    auth_session      Session[]
+    key               Key[]
+    VerificationCode  VerificationCode[]
+    ProjectInvitation ProjectInvitation[]
 
     @@map(name: "users")
 }
@@ -67,11 +68,12 @@ model VerificationCode {
 }
 
 model Project {
-    id        Int          @id @default(autoincrement())
-    name      String
-    members   Membership[]
-    createdAt DateTime     @default(now())
-    updatedAt DateTime     @updatedAt
+    id          String              @id @default(cuid())
+    name        String
+    members     Membership[]
+    createdAt   DateTime            @default(now())
+    updatedAt   DateTime            @updatedAt
+    invitations ProjectInvitation[]
 
     @@map(name: "projects")
 }
@@ -83,11 +85,11 @@ enum MembershipRole {
 }
 
 model Membership {
-    id        Int            @id @default(autoincrement())
-    projectId Int
+    id        String         @id @default(cuid())
+    projectId String
     userId    String
     accepted  Boolean        @default(false)
-    role      MembershipRole
+    role      MembershipRole @default(MEMBER)
     user      User           @relation(fields: [userId], references: [id], onDelete: Cascade)
     project   Project        @relation(fields: [projectId], references: [id], onDelete: Cascade)
 
@@ -95,4 +97,23 @@ model Membership {
     @@index([projectId])
     @@index([userId])
     @@map(name: "memberships")
+}
+
+model ProjectInvitation {
+    id          String         @id @default(cuid())
+    email       String
+    name        String?
+    projectId   String
+    project     Project        @relation(fields: [projectId], references: [id], onDelete: Cascade)
+    invitedById String
+    invitedBy   User           @relation(fields: [invitedById], references: [id], onDelete: Cascade)
+    role        MembershipRole @default(MEMBER)
+    token       String         @unique
+    expires     DateTime
+    createdAt   DateTime       @default(now())
+    updatedAt   DateTime       @updatedAt
+
+    @@unique([projectId, email])
+    @@index([projectId])
+    @@map(name: "project_invitations")
 }

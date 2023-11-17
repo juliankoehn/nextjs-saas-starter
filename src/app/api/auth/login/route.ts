@@ -1,5 +1,6 @@
 import { auth } from "#/lib/auth/lucia";
 import { LuciaError } from "lucia";
+import { revalidatePath } from "next/cache";
 import * as context from "next/headers";
 import { NextResponse, type NextRequest } from "next/server";
 import { z } from "zod";
@@ -26,6 +27,8 @@ export const POST = async (request: NextRequest) => {
 
     const authRequest = auth.handleRequest(request.method, context);
     authRequest.setSession(session);
+
+    revalidatePath("/");
 
     return new Response(null, {
       status: 302,

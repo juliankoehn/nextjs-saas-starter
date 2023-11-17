@@ -90,9 +90,4 @@ export async function GET(request: NextRequest) {
       })
     );
   }
-
-  return new Response(
-    "Something really bad happened when trying to subscribe",
-    { status: 500 }
-  );
 }

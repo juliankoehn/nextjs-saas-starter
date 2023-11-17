@@ -1,8 +1,8 @@
 import { getPageSession } from "../auth/lucia";
 import { db } from "../db";
 
-export const getProjectMembers = async (projectId: string | number) => {
-  const id = typeof projectId === "string" ? parseInt(projectId) : projectId;
+export const getProjectMembers = async (projectId: string) => {
+  const id = projectId;
 
   const session = await getPageSession();
   if (!session) {
@@ -23,4 +23,6 @@ export const getProjectMembers = async (projectId: string | number) => {
   return memberships;
 };
 
-export type GetProjectMemberResult = ReturnType<typeof getProjectMembers>;
+export type GetProjectMemberResult = Awaited<
+  ReturnType<typeof getProjectMembers>
+>;

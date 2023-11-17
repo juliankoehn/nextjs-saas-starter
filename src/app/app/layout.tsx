@@ -1,3 +1,4 @@
+import { MobileNotSupported } from "#/components/ui/mobile-not-supported";
 import { Toaster } from "#/components/ui/toaster";
 import { getPageSession } from "#/lib/auth/lucia";
 import { NextPage } from "next";
@@ -16,6 +17,7 @@ const AppLayout: NextPage<{
 
   return (
     <>
+      <MobileNotSupported />
       <Providers />
       <Topbar />
       <div className="block pt-16">{children}</div>

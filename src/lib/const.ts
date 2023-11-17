@@ -23,11 +23,12 @@ export const WEBAPP_URL =
   RENDER_URL ||
   "http://localhost:3000";
 
+export const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME || "JK Starter";
 export const CP_PREFIX = "/app";
 
 // Plans
-export const TIER_FREE_PLAN_ID = "plan:free@10";
-export const TIER_BUSINESS_PLAN_ID = "plan:business@6";
+export const TIER_FREE_PLAN_ID = "plan:free@11";
+export const TIER_BUSINESS_PLAN_ID = "plan:business@7";
 export const TIER_PROFESSIONAL_PLAN_ID = "plan:professional@5";
 
 // Features
