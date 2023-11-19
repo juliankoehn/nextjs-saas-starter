@@ -19,7 +19,7 @@ export const GET = async (
     const user = await auth.getUser(userId);
     await auth.invalidateAllUserSessions(user.userId);
     await auth.updateUserAttributes(user.userId, {
-      emailVerified: new Date().toISOString(),
+      emailVerified: new Date(),
     });
 
     const session = await auth.createSession({
