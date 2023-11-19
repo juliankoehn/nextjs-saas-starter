@@ -126,3 +126,65 @@ export const validatePasswordResetToken = async (token: string) => {
   }
   return storedToken.user_id;
 };
+
+export const generateEmailChangeToken = async (
+  userId: string,
+  email: string
+) => {
+  const storedUserTokens = await db.emailChangeToken.findMany({
+    where: {
+      user_id: userId,
+    },
+  });
+
+  if (storedUserTokens.length > 0) {
+    const reusableStoredToken = storedUserTokens.find((token) => {
+      // check if expiration is within 1 hour
+      // and reuse the token if true
+      return isWithinExpiration(
+        Number(token.expires) - PASSWORD_RESET_EXPIRES_IN / 2
+      );
+    });
+    if (reusableStoredToken) return reusableStoredToken.id;
+  }
+
+  const token = generateRandomString(63);
+  await db.emailChangeToken.create({
+    data: {
+      id: token,
+      user_id: userId,
+      email,
+      expires: new Date().getTime() + EXPIRES_IN,
+    },
+  });
+
+  return token;
+};
+
+export const validateEmailChangeToken = async (token: string) => {
+  const storedToken = await db.$transaction(async (tx) => {
+    const storedToken = await tx.emailChangeToken.findUnique({
+      where: {
+        id: token,
+      },
+    });
+
+    if (!storedToken) throw new Error("Invalid token");
+    await tx.emailChangeToken.delete({
+      where: {
+        id: storedToken.id,
+      },
+    });
+
+    return storedToken;
+  });
+
+  const tokenExpires = Number(storedToken.expires); // bigint => number conversion
+  if (!isWithinExpiration(tokenExpires)) {
+    throw new Error("Expired token");
+  }
+  return {
+    userId: storedToken.user_id,
+    newEmail: storedToken.email,
+  };
+};

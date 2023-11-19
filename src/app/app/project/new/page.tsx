@@ -11,7 +11,7 @@ import { NewProjectForm } from "./new-project-form";
 
 const ProjectNewPage = () => {
   return (
-    <div className="mx-auto max-w-7xl p-8">
+    <div className="mx-auto max-w-7xl w-full p-8">
       <Card>
         <CardHeader>
           <CardTitle>New Project</CardTitle>

@@ -36,4 +36,16 @@ export const sendPasswordResetLink = async (token: string) => {
   // @TODO sendmail magic.
 };
 
-export const sendPasswordChangedEmail = async (email: string) => {};
+export const sendPasswordChangedEmail = async (email: string) => {
+  const subject = `Password Changed`;
+  console.log(`Your password has been changed for ${email}`);
+
+  // @TODO sendmail magic.
+};
+
+export const sendEmailChangeLink = async (token: string) => {
+  const subject = `Email Change Verification`;
+  const url = `${WEBAPP_URL}/auth/email-change/${token}`;
+
+  console.log(`Your email change link: ${url}`);
+};

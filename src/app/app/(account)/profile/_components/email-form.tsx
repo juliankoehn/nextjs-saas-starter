@@ -23,7 +23,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { updateDisplayName } from "./actions";
+import { updateEmail } from "./actions";
 
 const schema = z.object({
   email: z.string().email(),
@@ -43,7 +43,11 @@ export const EmailForm: React.FC<EmailFormProps> = (props) => {
 
   const onSubmit = async (data: { email: string }) => {
     try {
-      await updateDisplayName(data.email);
+      await updateEmail(data.email);
+      toast({
+        title: "Please verify your email to complete the change.",
+        description: `Please follow the verification link sent to ${data.email}`,
+      });
     } catch {
       toast({
         title: "Error",
