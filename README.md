@@ -32,11 +32,11 @@ You can start editing the page by modifying app/page.tsx. The page auto-updates 
   - [x] Email Verification
   - [x] Login
   - [x] Logout
-- [ ] **Account**
-  - [ ] Change Username / Name
-  - [ ] Change Password
-  - [ ] Change Email
-    - [ ] Confirm Email
+- [x] **Account**
+  - [x] Change Username / Name
+  - [x] Change Password
+  - [x] Change Email
+    - [x] Confirm Email
   - [ ] Change Timezone
   - [ ] Change Language
   - [ ] Change Appearance
