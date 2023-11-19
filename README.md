@@ -1,68 +1,48 @@
-<p align="center">
-  <a href="https://nextjs-postgres-auth.vercel.app/">
-    <img src="/public/next.svg" height="96">
-    <h3 align="center">Next.js SaaS Prisma PostgreSQL Auth Starter</h3>
-  </a>
-</p>
+# Next.js SaaS Prisma PostgreSQL Auth Starter
 
+This project aims to create a metered billing SaaS utilizing Next.js, Prisma, PostgreSQL, and Stripe.
 
-<p align="center">
-This is a <a href="https://nextjs.org/">Next.js</a> starter kit that uses <a href="https://next-auth.js.org/">Lucia</a> for simple email + password login<br/>
-<a href="https://www.prisma.io/">Prisma</a> as the ORM.
+> :warning: **it's still a work in progress.**
 
-<br/>
+## Features
 
-
-# Tech Stack
-
-- Next.js 14
-- Prisma
-- Tier.run
-- Stripe
-
-## Ziele
-
-### Pricing with Tier https://model.tier.run/edit/clozrz5t2bi90o972kzpmj68v
-
-Was soll das Boilerplate können?
-
-Ziel ist ein metered billing SaaS mit Next.js, Prisma, PostgreSQL und Stripe.
-
-- [x] Authentifizierung
-  - [x] Registrierung
-  - [x] Passwort vergessen
-  - [x] Passwort ändern
-  - [x] Email verifizieren
+- [x] **Authentication**
+  - [x] Registration
+  - [x] Forgot Password
+  - [x] Change Password
+  - [x] Email Verification
   - [x] Login
   - [x] Logout
-- [ ] Account
+- [ ] **Account**
   - [ ] Change Username / Name
   - [ ] Change Password
   - [ ] Change Email
     - [ ] Confirm Email
   - [ ] Change Timezone
   - [ ] Change Language
-  - [ ] Change Appereance
-- [ ] Projekte
-  - [x] Erstellen
-  - [x] Name ändern
-  - [x] Project Löschen
+  - [ ] Change Appearance
+- [ ] **Projects**
+  - [x] Create
+  - [x] Change Name
+  - [x] Delete Project
     - [ ] Restrict Delete to Owner
-  - [ ] Mitglieder
-    - [ ] Hinzufügen
+  - [ ] **Members**
+    - [ ] Add
       - [x] Create Invitation
         - [ ] Send Email
       - [x] Accept Invitation
       - [x] Remove Invitation
-    - [x] Entfernen
+    - [x] Remove
     - [ ] Change Role
-- [ ] Billing
+- [ ] **Billing**
 
-### Tech Stack
+## Tech Stack
 
+- Next.js 14
+- Prisma
+- Tier.run
+- Stripe
 - tailwindcss
 - shadcn
 - lucide-icons
 - lucia-auth
-- prisma
-- tier.run
