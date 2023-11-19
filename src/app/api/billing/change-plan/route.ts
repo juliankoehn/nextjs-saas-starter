@@ -30,7 +30,7 @@ export async function GET(request: NextRequest) {
   try {
     const result = await db.project.findFirst({
       where: {
-        id: parseInt(projectId),
+        id: projectId,
         members: {
           some: {
             userId: session.userId,

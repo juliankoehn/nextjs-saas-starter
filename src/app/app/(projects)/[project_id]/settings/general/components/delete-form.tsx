@@ -18,7 +18,7 @@ import React from "react";
 import { deleteProject } from "../actions";
 
 export interface DeleteFormProps {
-  projectId: number;
+  projectId: string;
 }
 
 export const DeleteForm: React.FC<DeleteFormProps> = (props) => {

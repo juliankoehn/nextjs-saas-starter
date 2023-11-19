@@ -18,7 +18,7 @@ import { updateProject } from "../actions";
 import { GeneralFormSchema, generalFormSchema } from "../schema";
 
 export interface GeneralFormProps {
-  projectId: string | number;
+  projectId: string;
   defaultValues: Partial<GeneralFormSchema>;
 }
 

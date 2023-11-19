@@ -35,7 +35,7 @@ const SettingsPage: NextPage<Props> = async ({ params }) => {
       <Separator />
       <div className="text-foreground text-base font-semibold">Danger Zone</div>
       <div>
-        <DeleteForm projectId={parseInt(params.project_id)} />
+        <DeleteForm projectId={params.project_id} />
       </div>
     </div>
   );

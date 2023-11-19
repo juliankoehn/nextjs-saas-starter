@@ -52,7 +52,7 @@ const membershipRoleOptions = [
 ];
 
 export interface AddTeamMemberProps {
-  projectId: string | number;
+  projectId: string;
 }
 
 export const AddTeamMember: React.FC<AddTeamMemberProps> = (props) => {

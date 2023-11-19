@@ -8,7 +8,7 @@ import Link from "next/link";
 import { AddTeamMember } from "./add-team-member";
 
 export interface MembershipActionsProps {
-  projectId: number | string;
+  projectId: string;
   isAdminOrOwner: boolean;
   role: MembershipRole;
   memberLimitReached: boolean;
