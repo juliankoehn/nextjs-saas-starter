@@ -8,13 +8,18 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "email": "email dev"
+    "email:create": "email create --out=./src/lib/emails/templates --",
+    "email:preview": "email preview ./src/lib/emails/templates"
   },
   "prisma": {
     "schema": "src/db/schema.prisma"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.2",
+    "@jsx-email/all": "^3.0.1",
+    "@jsx-email/cli": "^3.0.1",
+    "@jsx-email/render": "^3.0.1",
+    "@jsx-email/tailwind": "^3.0.3",
     "@lucia-auth/adapter-prisma": "^3.0.2",
     "@prisma/client": "^5.5.2",
     "@radix-ui/react-alert-dialog": "^1.0.5",

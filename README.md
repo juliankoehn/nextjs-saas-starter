@@ -65,3 +65,4 @@ You can start editing the page by modifying app/page.tsx. The page auto-updates 
 - shadcn
 - lucide-icons
 - lucia-auth
+- JSX Email
