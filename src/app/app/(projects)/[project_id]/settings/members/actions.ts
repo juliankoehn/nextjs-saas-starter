@@ -159,35 +159,3 @@ export const inviteMembers = async (
     message: `${invitedCount} users invited successfully`,
   };
 };
-
-export const deleteInvite = async (id: string) => {
-  const session = await getPageSession();
-  if (!session) {
-    return {
-      status: "KO",
-      message: "You must be logged in to delete invitations",
-    };
-  }
-
-  await db.projectInvitation.delete({
-    where: {
-      id,
-      project: {
-        members: {
-          some: {
-            userId: session.user.userId,
-            role: {
-              in: [MembershipRole.ADMIN, MembershipRole.OWNER],
-            },
-          },
-        },
-      },
-    },
-  });
-
-  revalidatePath("/");
-  return {
-    status: "OK",
-    message: "Invitation deleted successfully",
-  };
-};

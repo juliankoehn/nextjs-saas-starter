@@ -28,3 +28,12 @@ export const sendProjectInviteEmail = async (
 
   // @TODO sendmail magic.
 };
+
+export const sendPasswordResetLink = async (token: string) => {
+  const url = `${WEBAPP_URL}/auth/password-reset/${token}`;
+  console.log(`Your password reset link: ${url}`);
+
+  // @TODO sendmail magic.
+};
+
+export const sendPasswordChangedEmail = async (email: string) => {};

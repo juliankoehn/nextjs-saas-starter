@@ -1,3 +1,4 @@
+import { Toaster } from "#/components/ui/toaster";
 import { cn } from "#/utils/dom-utils";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -19,6 +20,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={cn(inter.className, "min-h-screen bg-background")}>
         {children}
+
+        <Toaster />
       </body>
     </html>
   );

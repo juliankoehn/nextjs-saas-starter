@@ -46,6 +46,7 @@
     "tailwind-merge": "^2.0.0",
     "tailwindcss-animate": "^1.0.7",
     "tier": "^5.10.0",
+    "tzdata": "^1.0.38",
     "zod": "^3.22.4"
   },
   "devDependencies": {

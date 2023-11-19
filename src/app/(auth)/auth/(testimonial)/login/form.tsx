@@ -12,6 +12,7 @@ import {
 } from "#/components/ui/form";
 import { Input } from "#/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { loginSchema, type LoginSchema } from "./schema";
@@ -40,8 +41,6 @@ export const LoginForm: React.FC<LoginFormProps> = (props) => {
     });
 
     if (response.status === 0) {
-      // redirected
-      // when using `redirect: "manual"`, response status 0 is returned
       return router.refresh();
     }
   }
@@ -83,14 +82,15 @@ export const LoginForm: React.FC<LoginFormProps> = (props) => {
                   placeholder="panic@thedis.co"
                 />
               </FormControl>
-              <FormDescription>
-                Your password must be at least 8 characters with a mix of upper
-                and lower case letters, numbers, and symbols.
-              </FormDescription>
               <FormMessage />
             </FormItem>
           )}
         />
+        <div className="flex justify-end items-center">
+          <Link className="font-medium text-sm" href="/auth/password-reset">
+            Forgot Password?
+          </Link>
+        </div>
 
         <Button type="submit">Login</Button>
       </form>

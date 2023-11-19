@@ -1,9 +1,8 @@
-import { Sidebar } from "#/components/ui/sidebar";
-import { CP_PREFIX } from "#/lib/const";
-import { getProject } from "#/lib/project/get-current-project";
-import { CogIcon, HomeIcon } from "lucide-react";
+import { getPageSession } from "#/lib/auth/lucia";
+import { hasProjectAccess } from "#/lib/project/project-authority";
 import { NextPage } from "next";
-import { notFound } from "next/navigation";
+import { redirect } from "next/navigation";
+import { ProjectSidebar } from "./_components/project-sidebar";
 
 const ProjectLayout: NextPage<{
   children: React.ReactNode;
@@ -11,30 +10,20 @@ const ProjectLayout: NextPage<{
     project_id: string;
   };
 }> = async ({ children, params }) => {
-  // get project and ensure access..
-  const project = await getProject(params.project_id);
-  if (!project) {
-    notFound();
+  // authorization and authentication
+  const session = await getPageSession();
+  if (!session) {
+    redirect("/auth/login");
+  }
+
+  if (!(await hasProjectAccess(session.user.userId, params.project_id))) {
+    redirect("/app");
   }
 
   return (
-    <div className="transition-all block ps-16">
-      <Sidebar
-        links={[
-          {
-            href: `${CP_PREFIX}/${params.project_id}`,
-            label: "Dashboard",
-            icon: <HomeIcon />,
-            exact: true,
-          },
-          {
-            href: `${CP_PREFIX}/${params.project_id}/settings`,
-            label: "Settings",
-            icon: <CogIcon />,
-          },
-        ]}
-      />
-      <div>{children}</div>
+    <div className="flex flex-col flex-1 ps-16">
+      <ProjectSidebar projectId={params.project_id} />
+      <main className="flex flex-col flex-1">{children}</main>
     </div>
   );
 };

@@ -13,7 +13,7 @@ const SettingsLayout: React.FC<SettingsLayoutProps> = ({
   params,
 }) => {
   return (
-    <div className="max-w-7xl mx-auto p-8">
+    <div className="max-w-7xl mx-auto p-8 w-full">
       <div>
         <TabbedNav
           links={[

@@ -1,5 +1,4 @@
 import { MobileNotSupported } from "#/components/ui/mobile-not-supported";
-import { Toaster } from "#/components/ui/toaster";
 import { getPageSession } from "#/lib/auth/lucia";
 import { NextPage } from "next";
 import { redirect } from "next/navigation";
@@ -20,8 +19,7 @@ const AppLayout: NextPage<{
       <MobileNotSupported />
       <Providers />
       <Topbar />
-      <div className="block pt-16">{children}</div>
-      <Toaster />
+      <div className="flex flex-1 flex-col pt-16">{children}</div>
     </>
   );
 };

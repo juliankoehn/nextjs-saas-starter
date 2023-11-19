@@ -18,7 +18,7 @@ model User {
     emailVerified DateTime?
 
     email      String       @unique
-    timeZone   String       @default("Europe/Berlin")
+    timeZone   String       @default("Europe/Berlin") /// https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
     weekStart  String       @default("Monday")
     locale     String?
     timeFormat Int?
@@ -26,10 +26,11 @@ model User {
     updatedAt  DateTime     @updatedAt
     teams      Membership[]
 
-    auth_session      Session[]
-    key               Key[]
-    VerificationCode  VerificationCode[]
-    ProjectInvitation ProjectInvitation[]
+    auth_session       Session[]
+    key                Key[]
+    VerificationCode   VerificationCode[]
+    ProjectInvitation  ProjectInvitation[]
+    PasswordResetToken PasswordResetToken[]
 
     @@map(name: "users")
 }
@@ -66,6 +67,18 @@ model VerificationCode {
 
     @@map(name: "verification_code")
 }
+
+model PasswordResetToken {
+    id      String @id /// Token to send inside the reset link
+    expires BigInt /// Expiration (in milliseconds) of the token
+    user_id String
+    user    User   @relation(references: [id], fields: [user_id], onDelete: Cascade)
+
+    @@index([expires])
+    @@map("password_reset_tokens")
+}
+
+// Application tenancy
 
 model Project {
     id          String              @id @default(cuid())
@@ -117,3 +130,5 @@ model ProjectInvitation {
     @@index([projectId])
     @@map(name: "project_invitations")
 }
+
+// All other related models... below

@@ -19,15 +19,29 @@ import {
   DropdownMenuTrigger,
 } from "#/components/ui/dropdown-menu";
 import { MoreVerticalIcon, UserMinusIcon } from "lucide-react";
-import { forwardRef } from "react";
+import React, { forwardRef } from "react";
+import { deleteMemberAction } from "../actions";
 
 export interface MemberActionsProps {
+  id: string;
   isAdmin: boolean;
   isCurrentUser: boolean;
 }
 
 export const MemberActions: React.FC<MemberActionsProps> = (props) => {
-  const { isAdmin, isCurrentUser } = props;
+  const { id, isAdmin, isCurrentUser } = props;
+
+  const [isRemovingMember, setIsRemovingMember] = React.useState(false);
+
+  const handleRemoveMember = async () => {
+    setIsRemovingMember(true);
+
+    try {
+      await deleteMemberAction(id);
+    } finally {
+      setIsRemovingMember(false);
+    }
+  };
 
   return (
     <DropdownMenu>
@@ -55,7 +69,17 @@ export const MemberActions: React.FC<MemberActionsProps> = (props) => {
             </AlertDialogHeader>
             <AlertDialogFooter>
               <AlertDialogCancel>Cancel</AlertDialogCancel>
-              <AlertDialogAction>Continue</AlertDialogAction>
+              <AlertDialogAction asChild>
+                <Button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleRemoveMember();
+                  }}
+                  isLoading={isRemovingMember}
+                >
+                  Delete Member
+                </Button>
+              </AlertDialogAction>
             </AlertDialogFooter>
           </DialogItem>
         )}
@@ -81,7 +105,17 @@ export const MemberActions: React.FC<MemberActionsProps> = (props) => {
             </AlertDialogHeader>
             <AlertDialogFooter>
               <AlertDialogCancel>Cancel</AlertDialogCancel>
-              <AlertDialogAction>Continue</AlertDialogAction>
+              <AlertDialogAction asChild>
+                <Button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleRemoveMember();
+                  }}
+                  isLoading={isRemovingMember}
+                >
+                  Delete Member
+                </Button>
+              </AlertDialogAction>
             </AlertDialogFooter>
           </DialogItem>
         ) : (

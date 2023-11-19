@@ -70,6 +70,7 @@ export const MemberList: React.FC<MemberListProps> = (props) => {
                 {member.role.toLowerCase()}
               </span>
               <MemberActions
+                id={member.id}
                 isAdmin={hasAuthority}
                 isCurrentUser={currentUserId === member.userId}
               />

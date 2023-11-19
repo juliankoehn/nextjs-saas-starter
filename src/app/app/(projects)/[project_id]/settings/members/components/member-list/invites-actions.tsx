@@ -20,7 +20,7 @@ import {
 } from "#/components/ui/dropdown-menu";
 import { MoreVerticalIcon, UserMinusIcon } from "lucide-react";
 import React, { forwardRef } from "react";
-import { deleteInvite } from "../../actions";
+import { deleteInviteAction } from "../actions";
 
 export interface MemberActionsProps {
   id: string;
@@ -34,7 +34,7 @@ export const InvitesActions: React.FC<MemberActionsProps> = (props) => {
 
   const handleDelete = async () => {
     setIsDeleting(true);
-    await deleteInvite(id);
+    await deleteInviteAction(id);
     setIsDeleting(false);
   };
 
@@ -84,6 +84,7 @@ export const InvitesActions: React.FC<MemberActionsProps> = (props) => {
           </DialogItem>
         ) : (
           <DropdownMenuItem disabled variant="destructive">
+            <UserMinusIcon className="h-4 w-4 me-2" />
             Remove teammate
           </DropdownMenuItem>
         )}
