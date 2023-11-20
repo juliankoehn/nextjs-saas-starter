@@ -19,6 +19,7 @@ import {
 import { Input } from "#/components/ui/input";
 import { toast } from "#/components/ui/use-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -40,9 +41,12 @@ export const DisplayNameForm: React.FC<DisplayNameFormProps> = (props) => {
     },
   });
 
+  const router = useRouter();
+
   const onSubmit = async (data: { name: string }) => {
     try {
       await updateDisplayName(data.name);
+      router.refresh();
     } catch {
       toast({
         title: "Error",

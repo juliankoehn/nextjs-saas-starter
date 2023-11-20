@@ -21,6 +21,7 @@ export const auth = lucia({
     return {
       username: databaseUser.username ?? databaseUser.name,
       emailVerified: databaseUser.emailVerified,
+      locale: databaseUser.locale,
       timezone: databaseUser.timezone,
       name: databaseUser.name,
       email: databaseUser.email,

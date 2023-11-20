@@ -1,5 +1,5 @@
 import { Sidebar } from "#/components/ui/sidebar";
-import { GlobeIcon, UnlockIcon, UserIcon } from "lucide-react";
+import { UnlockIcon, UserIcon } from "lucide-react";
 import { NextPage } from "next";
 
 const ProfileLayout: NextPage<{
@@ -14,11 +14,6 @@ const ProfileLayout: NextPage<{
             label: "Profile",
             icon: <UserIcon />,
             exact: true,
-          },
-          {
-            href: "/app/profile/account",
-            label: "Account",
-            icon: <GlobeIcon />,
           },
           {
             href: "/app/profile/security",
