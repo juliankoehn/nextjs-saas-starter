@@ -71,8 +71,8 @@ export const LocalizationForm: React.FC<LocalizationFormProps> = (props) => {
   const form = useForm<FormValues>({
     resolver: zodResolver(schema),
     defaultValues: {
-      ...defaultValues,
-      ...props.defaultValues,
+      language: props.defaultValues?.language ?? defaultValues.language,
+      timezone: props.defaultValues?.timezone ?? defaultValues.timezone,
     },
   });
 
