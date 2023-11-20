@@ -1,9 +1,26 @@
 version: "3"
 
 services:
+  postgres:
+    image: "nickblah/postgis:15-postgis-3"
+    container_name: postgres-15
+    restart: unless-stopped
+    ports:
+      - "${FORWARD_PGSQL_PORT:-5432}:5432"
+    volumes:
+      - pg-15-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+    environment:
+      POSTGRES_PASSWORD: "${DB_PASSWORD:-postgres}"
+
   mailpit:
     image: "axllent/mailpit:latest"
     container_name: mailpit
+    restart: unless-stopped
     ports:
       - 1025:1025
       - 8025:8025
+
+volumes:
+  pg-15-data:

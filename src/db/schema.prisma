@@ -12,19 +12,17 @@ datasource db {
 }
 
 model User {
-    id            String    @id @unique
+    id            String       @id @unique
     username      String?
     name          String?
     emailVerified DateTime?
-
-    email      String       @unique
-    timeZone   String       @default("Europe/Berlin") /// https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-    weekStart  String       @default("Monday")
-    locale     String?
-    timeFormat Int?
-    createdAt  DateTime     @default(now())
-    updatedAt  DateTime     @updatedAt
-    teams      Membership[]
+    email         String       @unique
+    timeZone      String       @default("Europe/Berlin") /// https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+    locale        String? /// Prefered Locale of the user
+    theme         String       @default("system") /// Light, Dark or System prefered color-mode
+    createdAt     DateTime     @default(now())
+    updatedAt     DateTime     @updatedAt
+    teams         Membership[]
 
     auth_session       Session[]
     key                Key[]
