@@ -40,6 +40,7 @@ You can start editing the page by modifying app/page.tsx. The page auto-updates 
   - [ ] Change Timezone
   - [ ] Change Language
   - [ ] Change Appearance
+  - [ ] Delete Account restrict when Owner of Projects
 - [ ] **Projects**
   - [x] Create
   - [x] Change Name
@@ -65,8 +66,14 @@ You can start editing the page by modifying app/page.tsx. The page auto-updates 
 - shadcn
 - lucide-icons
 - lucia-auth
-- JSX Email
+- React-Email
   
 ## Docker Compose
 
 using mailpit for local email development.
+
+## Development
+
+### Emails
+
+> :warning: docs section is WIP

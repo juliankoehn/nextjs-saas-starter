@@ -8,8 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "email:create": "email create --out=./src/lib/emails/templates --",
-    "email:preview": "email preview ./src/lib/emails/templates"
+    "email:preview": "email dev -p 3001 -d ./src/lib/emails/templates"
   },
   "prisma": {
     "schema": "src/db/schema.prisma"

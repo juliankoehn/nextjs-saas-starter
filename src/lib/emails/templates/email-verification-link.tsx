@@ -62,3 +62,5 @@ export const EmailVerificationLinkEmail = ({
     </Tailwind>
   </Html>
 );
+
+export default EmailVerificationLinkEmail;
