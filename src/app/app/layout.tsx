@@ -17,9 +17,10 @@ const AppLayout: NextPage<{
   return (
     <>
       <MobileNotSupported />
-      <Providers />
-      <Topbar />
-      <div className="flex flex-1 flex-col pt-16">{children}</div>
+      <Providers user={session.user}>
+        <Topbar />
+        <div className="flex flex-1 flex-col pt-16">{children}</div>
+      </Providers>
     </>
   );
 };

@@ -1,12 +1,18 @@
 "use client";
 import { Button } from "#/components/ui/button";
 import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "#/components/ui/card";
+import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "#/components/ui/form";
 import { Input } from "#/components/ui/input";
@@ -61,21 +67,37 @@ export const GeneralForm: React.FC<GeneralFormProps> = (props) => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        <FormField
-          control={form.control}
-          name="name"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Name</FormLabel>
-              <FormControl>
-                <Input placeholder="Project Name" {...field} />
-              </FormControl>
-              <FormDescription>Name of the project.</FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <Button type="submit">Update</Button>
+        <Card>
+          <CardHeader>
+            <CardTitle>Name</CardTitle>
+            <CardDescription>Name of the project.</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input placeholder="Project Name" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </CardContent>
+          <CardFooter className="py-3">
+            <div className="flex items-center justify-end ml-auto">
+              <Button
+                isLoading={form.formState.isSubmitting}
+                type="submit"
+                disabled={!form.formState.isValid}
+              >
+                Save
+              </Button>
+            </div>
+          </CardFooter>
+        </Card>
       </form>
     </Form>
   );

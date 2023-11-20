@@ -1,9 +1,15 @@
 "use client";
 
+import { User } from "lucia";
 import { AppProgressBar as ProgressBar } from "next-nprogress-bar";
-import React, { PropsWithChildren } from "react";
+import React from "react";
 
-const Providers: React.FC<PropsWithChildren> = ({ children }) => {
+export type ProvidersProps = {
+  user?: User;
+  children: React.ReactNode;
+};
+
+const Providers: React.FC<ProvidersProps> = ({ children, user }) => {
   return (
     <>
       <ProgressBar

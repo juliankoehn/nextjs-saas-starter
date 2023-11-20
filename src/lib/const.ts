@@ -28,6 +28,8 @@ export const __DEV__ = !(process?.env.NODE_ENV === "production");
 export const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME || "JK Starter";
 export const CP_PREFIX = "/app";
 
+export const DEFAULT_LOCALE = "en";
+
 // Plans
 export const TIER_FREE_PLAN_ID = "plan:free@11";
 export const TIER_BUSINESS_PLAN_ID = "plan:business@7";

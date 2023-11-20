@@ -1,3 +1,4 @@
+"use client";
 import { Sidebar } from "#/components/ui/sidebar";
 import { CP_PREFIX } from "#/lib/const";
 import { CogIcon, HomeIcon } from "lucide-react";
@@ -6,7 +7,7 @@ export interface ProjectSidebarProps {
   projectId: string;
 }
 
-export const ProjectSidebar: React.FC<ProjectSidebarProps> = (props) => {
+export const ProjectSidebar = (props: ProjectSidebarProps) => {
   const { projectId } = props;
   return (
     <Sidebar

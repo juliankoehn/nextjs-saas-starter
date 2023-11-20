@@ -1,5 +1,4 @@
 import { Separator } from "#/components/ui/separator";
-import { SubPageHeader } from "#/components/ui/subpage-header";
 import { getProject } from "#/lib/project/get-current-project";
 import { NextPage } from "next";
 import { notFound } from "next/navigation";
@@ -20,11 +19,6 @@ const SettingsPage: NextPage<Props> = async ({ params }) => {
 
   return (
     <div className="flex flex-col gap-8">
-      <SubPageHeader
-        title="Settings"
-        description="Manage Settings for your Project"
-      />
-      <Separator />
       <GeneralForm
         projectId={params.project_id}
         defaultValues={{
@@ -33,10 +27,7 @@ const SettingsPage: NextPage<Props> = async ({ params }) => {
       />
 
       <Separator />
-      <div className="text-foreground text-base font-semibold">Danger Zone</div>
-      <div>
-        <DeleteForm projectId={params.project_id} />
-      </div>
+      <DeleteForm projectId={params.project_id} />
     </div>
   );
 };

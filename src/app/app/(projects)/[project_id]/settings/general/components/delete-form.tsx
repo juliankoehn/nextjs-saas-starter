@@ -12,6 +12,13 @@ import {
   AlertDialogTrigger,
 } from "#/components/ui/alert-dialog";
 import { Button } from "#/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "#/components/ui/card";
 import { toast } from "#/components/ui/use-toast";
 import { useRouter } from "next/navigation";
 import React from "react";
@@ -44,9 +51,25 @@ export const DeleteForm: React.FC<DeleteFormProps> = (props) => {
 
   return (
     <AlertDialog>
-      <AlertDialogTrigger asChild>
-        <Button variant="outline">Delete Project</Button>
-      </AlertDialogTrigger>
+      <Card variant="destructive">
+        <CardHeader>
+          <CardTitle>Danger Zone</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p>
+            You can delete your project at any time. This will permanently
+            delete your project and <strong>all related data</strong>.
+          </p>
+        </CardContent>
+
+        <CardFooter variant="destructive" className="py-3">
+          <div className="flex items-center justify-end ml-auto">
+            <AlertDialogTrigger asChild>
+              <Button variant="outline">Delete Project</Button>
+            </AlertDialogTrigger>
+          </div>
+        </CardFooter>
+      </Card>
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
