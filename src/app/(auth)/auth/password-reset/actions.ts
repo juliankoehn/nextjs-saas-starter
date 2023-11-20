@@ -18,10 +18,14 @@ export const doPasswordReset = async (email: string) => {
     }
 
     const token = await generatePasswordResetToken(user.id);
-    await sendPasswordResetLink(token);
+    await sendPasswordResetLink({
+      token,
+      to: user.email,
+    });
 
     return delay();
   } catch (e) {
+    console.log(e);
     throw new InternalServerError("Something went wrong");
   }
 };

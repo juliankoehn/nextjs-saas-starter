@@ -8,8 +8,8 @@ import {
   Preview,
   Section,
   Text,
-} from "@jsx-email/all";
-import { Tailwind } from "@jsx-email/tailwind";
+} from "@react-email/components";
+import { Tailwind } from "@react-email/tailwind";
 
 export const TemplateName = "email-verification-link";
 
@@ -18,7 +18,7 @@ export type EmailVerificationLinkEmailProps = {
   link: string;
 };
 
-export const Template = ({
+export const EmailVerificationLinkEmail = ({
   link,
   appName,
 }: EmailVerificationLinkEmailProps) => (

@@ -66,3 +66,7 @@ You can start editing the page by modifying app/page.tsx. The page auto-updates 
 - lucide-icons
 - lucia-auth
 - JSX Email
+  
+## Docker Compose
+
+using mailpit for local email development.

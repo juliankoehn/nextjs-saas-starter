@@ -23,6 +23,8 @@ export const WEBAPP_URL =
   RENDER_URL ||
   "http://localhost:3000";
 
+export const __DEV__ = !(process?.env.NODE_ENV === "production");
+
 export const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME || "JK Starter";
 export const CP_PREFIX = "/app";
 
