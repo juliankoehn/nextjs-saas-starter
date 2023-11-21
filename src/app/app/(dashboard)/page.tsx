@@ -3,7 +3,7 @@ import { db } from "#/lib/db";
 import { cn } from "#/utils/dom-utils";
 import { NextPage } from "next";
 import { redirect } from "next/navigation";
-import { ProjectGallery } from "./_components/project-list";
+import { ProjectGallery } from "../_components/project-list";
 
 const ProjectList: NextPage = async () => {
   const session = await getPageSession();
