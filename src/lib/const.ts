@@ -1,5 +1,6 @@
 import { TierPlanConstant } from "#/types";
 import { FeatureName, PlanName } from "tier";
+import { env } from "./env";
 
 const VERCEL_URL = process.env.NEXT_PUBLIC_VERCEL_URL
   ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
@@ -25,7 +26,7 @@ export const WEBAPP_URL =
 
 export const __DEV__ = !(process?.env.NODE_ENV === "production");
 
-export const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME || "JK Starter";
+export const APP_NAME = env.NEXT_PUBLIC_APP_NAME;
 export const CP_PREFIX = "/app";
 
 export const DEFAULT_LOCALE = "en";

@@ -1,5 +1,5 @@
 import { Sidebar } from "#/components/ui/sidebar";
-import { UnlockIcon, UserIcon } from "lucide-react";
+import { UnlockIcon, UserIcon, WorkflowIcon } from "lucide-react";
 import { NextPage } from "next";
 
 const ProfileLayout: NextPage<{
@@ -14,6 +14,11 @@ const ProfileLayout: NextPage<{
             label: "Profile",
             icon: <UserIcon />,
             exact: true,
+          },
+          {
+            href: "/app/profile/login-connections",
+            label: "Login Connections",
+            icon: <WorkflowIcon />,
           },
           {
             href: "/app/profile/security",

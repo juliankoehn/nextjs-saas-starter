@@ -4,16 +4,22 @@ import { cn } from "#/utils";
 import { VariantProps, cva } from "class-variance-authority";
 
 export const cardVariants = cva(
-  ["rounded-lg border bg-card text-card-foreground shadow-sm"],
+  ["rounded-lg border bg-card text-card-foreground"],
   {
     variants: {
       variant: {
         default: "",
+        muted: "bg-accent text-accent-foreground",
         destructive: "border-destructive/20",
+      },
+      shadow: {
+        default: "shadow-sm",
+        none: "",
       },
     },
     defaultVariants: {
       variant: "default",
+      shadow: "default",
     },
   }
 );

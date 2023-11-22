@@ -16,6 +16,7 @@
   "dependencies": {
     "@hookform/resolvers": "^3.3.2",
     "@lucia-auth/adapter-prisma": "^3.0.2",
+    "@lucia-auth/oauth": "^3.5.0",
     "@prisma/client": "^5.5.2",
     "@radix-ui/react-alert-dialog": "^1.0.5",
     "@radix-ui/react-avatar": "^1.0.4",
