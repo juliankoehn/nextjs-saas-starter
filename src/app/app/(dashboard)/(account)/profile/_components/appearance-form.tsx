@@ -88,19 +88,31 @@ export const AppearanceForm: React.FC = (props) => {
                         <FormControl>
                           <RadioGroupItem value="system" className="sr-only" />
                         </FormControl>
-                        <div className="items-center rounded-md border-2 border-muted p-1 hover:border-accent">
-                          <div className="space-y-2 rounded-sm bg-[#ecedef] p-2">
-                            <div className="space-y-2 rounded-md bg-white p-2 shadow-sm">
-                              <div className="h-2 w-[80px] rounded-lg bg-[#ecedef]" />
-                              <div className="h-2 w-[100px] rounded-lg bg-[#ecedef]" />
+                        <div className="flex items-center rounded-md border-2 border-muted p-1 hover:border-accent">
+                          <div className="w-1/2 space-y-2 rounded-l-sm bg-[#ecedef] py-2 pl-2">
+                            <div className="space-y-2 rounded-l-md bg-white py-2 pl-2 shadow-sm">
+                              <div className="h-2 w-[80px] rounded-l-lg bg-[#ecedef]" />
+                              <div className="h-2 w-[100px] rounded-l-lg bg-[#ecedef]" />
                             </div>
-                            <div className="flex items-center space-x-2 rounded-md bg-white p-2 shadow-sm">
+                            <div className="h-[32px] flex items-center space-x-2 rounded-l-md bg-white pl-2 py-2 shadow-sm">
                               <div className="h-4 w-4 rounded-full bg-[#ecedef]" />
-                              <div className="h-2 w-[100px] rounded-lg bg-[#ecedef]" />
+                              <div className="h-2 w-[55px] rounded-l-lg bg-[#ecedef]" />
                             </div>
-                            <div className="flex items-center space-x-2 rounded-md bg-white p-2 shadow-sm">
+                            <div className="h-[32px] flex items-center space-x-2 rounded-l-md bg-white pl-2 py-2 shadow-sm">
                               <div className="h-4 w-4 rounded-full bg-[#ecedef]" />
-                              <div className="h-2 w-[100px] rounded-lg bg-[#ecedef]" />
+                              <div className="h-2 w-[55px] rounded-l-lg bg-[#ecedef]" />
+                            </div>
+                          </div>
+                          <div className="w-1/2 space-y-2 rounded-r-sm bg-slate-950 py-2 pr-2">
+                            <div className="space-y-2 rounded-md bg-slate-800 py-2 pr-2 shadow-sm">
+                              <div className="h-2 w-[30px] rounded-r-lg bg-slate-400" />
+                              <div className="h-2 w-[50px] rounded-r-lg bg-slate-400" />
+                            </div>
+                            <div className="h-[32px] flex items-center space-x-2 rounded-r-md bg-slate-800 py-2 pr-2 shadow-sm">
+                              <div className="h-2 w-[40px] rounded-r-lg bg-slate-400" />
+                            </div>
+                            <div className="h-[32px] flex items-center space-x-2 rounded-r-md bg-slate-800 py-2 pr-2 shadow-sm">
+                              <div className="h-2 w-[40px] rounded-r-lg bg-slate-400" />
                             </div>
                           </div>
                         </div>
