@@ -1,6 +1,8 @@
 import { buttonVariants } from "#/components/ui/button";
 import { getPageSession } from "#/lib/auth/lucia";
+import { isGithubOAuthEnabled } from "#/lib/auth/oauth_github";
 import { cn } from "#/utils";
+import { GithubIcon } from "lucide-react";
 import { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -58,6 +60,27 @@ export default async function Home({
             </p>
           </div>
           <LoginForm callbackUrl={searchParams.callbackUrl} />
+          {isGithubOAuthEnabled() && (
+            <>
+              <div className="relative">
+                <div className="absolute inset-0 flex items-center">
+                  <span className="w-full border-t" />
+                </div>
+                <div className="relative flex justify-center text-xs uppercase">
+                  <span className="bg-background px-2 text-muted-foreground">
+                    Or continue with
+                  </span>
+                </div>
+              </div>
+              <Link
+                href="/auth/oauth?provider=github"
+                className={cn(buttonVariants({ variant: "outline" }), "w-full")}
+              >
+                <GithubIcon className="mr-2 h-4 w-4" />
+                GitHub
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </>

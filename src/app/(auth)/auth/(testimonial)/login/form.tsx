@@ -69,12 +69,15 @@ export const LoginForm: React.FC<LoginFormProps> = (props) => {
           name="password"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>
-                Password{" "}
-                <span className="text-red-500" aria-hidden="true">
-                  *
-                </span>
-              </FormLabel>
+              <div className="flex justify-between">
+                <FormLabel>Password </FormLabel>
+                <Link
+                  className="font-medium text-xs hover:underline"
+                  href="/auth/password-reset"
+                >
+                  Forgot Password?
+                </Link>
+              </div>
               <FormControl>
                 <Input
                   {...field}
@@ -86,12 +89,6 @@ export const LoginForm: React.FC<LoginFormProps> = (props) => {
             </FormItem>
           )}
         />
-        <div className="flex justify-end items-center">
-          <Link className="font-medium text-sm" href="/auth/password-reset">
-            Forgot Password?
-          </Link>
-        </div>
-
         <Button type="submit">Login</Button>
       </form>
     </Form>
