@@ -63,3 +63,16 @@ export const updateLocalizations = async (locale: string, timeZone: string) => {
     throw new InternalServerError("Something went wrong");
   }
 };
+
+export const deletePersonalAccount = async () => {
+  const session = await getPageSession();
+  if (!session) {
+    throw new UnauthorizedError();
+  }
+
+  try {
+    await auth.deleteUser(session.user.userId);
+  } catch {
+    throw new InternalServerError("Something went wrong");
+  }
+};

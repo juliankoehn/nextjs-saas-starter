@@ -1,4 +1,6 @@
 import { getPageSession } from "#/lib/auth/lucia";
+import { db } from "#/lib/db";
+import { MembershipRole } from "@prisma/client";
 import { redirect } from "next/navigation";
 import { AppearanceForm } from "./_components/appearance-form";
 import { DeleteAccountForm } from "./_components/delete-account-form";
@@ -8,9 +10,20 @@ import { LocalizationForm } from "./_components/localization-form";
 
 export default async function Profile() {
   const session = await getPageSession();
+
   if (!session) {
     redirect("/auth/login");
   }
+
+  const projects = await db.project.findMany({
+    where: {
+      members: {
+        some: {
+          role: MembershipRole.OWNER,
+        },
+      },
+    },
+  });
 
   return (
     <div className="grid gap-6">
@@ -23,7 +36,7 @@ export default async function Profile() {
           timezone: session.user.timezone,
         }}
       />
-      <DeleteAccountForm />
+      <DeleteAccountForm projects={projects} />
     </div>
   );
 }

@@ -47,7 +47,7 @@ License under the [MIT License](LICENSE).
   - [x] Change Timezone
   - [x] Change Language
   - [ ] Change Appearance
-  - [ ] Delete Account restrict when Owner of Projects
+  - [x] Delete Account restrict when Owner of Projects
 - [ ] **Projects**
   - [x] Create
   - [x] Change Name
