@@ -37,8 +37,8 @@ You can start editing the page by modifying app/page.tsx. The page auto-updates 
   - [x] Change Password
   - [x] Change Email
     - [x] Confirm Email
-  - [ ] Change Timezone
-  - [ ] Change Language
+  - [x] Change Timezone
+  - [x] Change Language
   - [ ] Change Appearance
   - [ ] Delete Account restrict when Owner of Projects
 - [ ] **Projects**
@@ -47,7 +47,7 @@ You can start editing the page by modifying app/page.tsx. The page auto-updates 
   - [x] Delete Project
     - [ ] Restrict Delete to Owner
   - [ ] **Members**
-    - [ ] Add
+    - [x] Add
       - [x] Create Invitation
         - [ ] Send Email
       - [x] Accept Invitation

@@ -70,7 +70,7 @@ export const LoginForm: React.FC<LoginFormProps> = (props) => {
           render={({ field }) => (
             <FormItem>
               <div className="flex justify-between">
-                <FormLabel>Password </FormLabel>
+                <FormLabel>Password</FormLabel>
                 <Link
                   className="font-medium text-xs hover:underline"
                   href="/auth/password-reset"
