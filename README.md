@@ -64,18 +64,6 @@ License under the [MIT License](LICENSE).
     - [ ] Change Role
 - [ ] **Billing**
 
-## Tech Stack
-
-- Next.js 14
-- Prisma
-- Tier.run
-- Stripe
-- tailwindcss
-- shadcn
-- lucide-icons
-- lucia-auth
-- React-Email
-  
 ## Docker Compose
 
 using mailpit for local email development.

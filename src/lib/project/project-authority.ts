@@ -1,6 +1,6 @@
 import { MembershipRole } from "@prisma/client";
 import { db } from "../db";
-import { ForbiddenError, UnauthorizedError } from "../error-code";
+import { UnauthorizedError } from "../error-code";
 
 export const hasProjectAccess = async (userId: string, projectId: string) => {
   const membership = await db.membership.findUnique({
@@ -53,7 +53,7 @@ export const hasProjectAuthority = async (
 
   const isAdminOrOwnerAccess = await isAdminOrOwner(userId, projectId);
   if (!isAdminOrOwnerAccess) {
-    throw new ForbiddenError("You are not the admin or owner of this team");
+    return false;
   }
 
   return true;

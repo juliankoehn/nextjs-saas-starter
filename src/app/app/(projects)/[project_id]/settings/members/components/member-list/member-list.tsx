@@ -4,6 +4,7 @@ import { GetProjectMemberResult } from "#/lib/project/get-project-members";
 import React from "react";
 import { InvitesActions } from "./invites-actions";
 import { MemberActions } from "./member-actions";
+import { RolePopover } from "./role-popover";
 
 export interface MemberListProps {
   currentUserId: string;
@@ -14,6 +15,10 @@ export interface MemberListProps {
 
 export const MemberList: React.FC<MemberListProps> = (props) => {
   const { invites, members, hasAuthority, currentUserId } = props;
+
+  const currentMember = members?.find(
+    (member) => member.userId === currentUserId
+  );
 
   return (
     <ul className="rounded-lg border divide-y">
@@ -66,9 +71,13 @@ export const MemberList: React.FC<MemberListProps> = (props) => {
               </div>
             </div>
             <div className="flex items-center justify-center gap-12">
-              <span className="text-sm text-foreground capitalize">
-                {member.role.toLowerCase()}
-              </span>
+              <RolePopover
+                isAdmin={currentMember?.role === "ADMIN"}
+                isOwner={currentMember?.role === "OWNER"}
+                projectId={member.projectId}
+                memberId={member.id}
+                role={member.role}
+              />
               <MemberActions
                 id={member.id}
                 isAdmin={hasAuthority}
