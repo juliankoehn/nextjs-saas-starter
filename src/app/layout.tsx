@@ -1,7 +1,7 @@
-import { Toaster } from "#/components/ui/toaster";
 import { cn } from "#/utils/dom-utils";
 import type { Metadata } from "next";
 import "./globals.css";
+import { GlobalProviders } from "./providers";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,9 +17,7 @@ export default function RootLayout({
     <html lang="en">
       <head />
       <body className={cn("min-h-screen bg-background")}>
-        {children}
-
-        <Toaster />
+        <GlobalProviders>{children}</GlobalProviders>
       </body>
     </html>
   );

@@ -8,6 +8,7 @@ declare namespace Lucia {
     email: string;
     username?: string;
     name?: string;
+    theme?: string;
   };
   type DatabaseSessionAttributes = {};
 }

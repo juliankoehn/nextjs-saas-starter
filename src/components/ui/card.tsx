@@ -10,7 +10,7 @@ export const cardVariants = cva(
       variant: {
         default: "",
         muted: "bg-accent text-accent-foreground",
-        destructive: "border-destructive/20",
+        destructive: "border-destructive/20 dark:border-destructive/60",
       },
       shadow: {
         default: "shadow-sm",
@@ -90,7 +90,7 @@ export const cardFooterVariants = cva("flex items-center p-6 pt-0", {
   variants: {
     variant: {
       default: "bg-muted border-t text-muted-foreground text-sm",
-      destructive: "bg-destructive/10",
+      destructive: "bg-destructive/10 dark:bg-destructive/60",
     },
   },
   defaultVariants: {

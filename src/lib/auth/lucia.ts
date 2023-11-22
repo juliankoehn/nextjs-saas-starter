@@ -25,6 +25,7 @@ export const auth = lucia({
       timezone: databaseUser.timezone,
       name: databaseUser.name,
       email: databaseUser.email,
+      theme: databaseUser.theme,
     };
   },
 });

@@ -23,6 +23,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { updateTheme } from "./actions";
 
 const schema = z.object({
   theme: z.enum(["system", "light", "dark"], {
@@ -44,7 +45,11 @@ export const AppearanceForm: React.FC = (props) => {
 
   const onSubmit = async (data: FormValues) => {
     try {
-      //await updateDisplayName(data.name);
+      await updateTheme(data.theme);
+      toast({
+        title: "Success",
+        description: "Theme updated",
+      });
     } catch {
       toast({
         title: "Error",
@@ -76,8 +81,34 @@ export const AppearanceForm: React.FC = (props) => {
                     onValueChange={field.onChange}
                     defaultValue={field.value}
                     value={field.value}
-                    className="grid max-w-md grid-cols-2 gap-8 pt-2"
+                    className="grid max-w-2xl grid-cols-3 gap-8 pt-2"
                   >
+                    <FormItem>
+                      <FormLabel className="[&:has([data-state=checked])>div]:border-primary">
+                        <FormControl>
+                          <RadioGroupItem value="system" className="sr-only" />
+                        </FormControl>
+                        <div className="items-center rounded-md border-2 border-muted p-1 hover:border-accent">
+                          <div className="space-y-2 rounded-sm bg-[#ecedef] p-2">
+                            <div className="space-y-2 rounded-md bg-white p-2 shadow-sm">
+                              <div className="h-2 w-[80px] rounded-lg bg-[#ecedef]" />
+                              <div className="h-2 w-[100px] rounded-lg bg-[#ecedef]" />
+                            </div>
+                            <div className="flex items-center space-x-2 rounded-md bg-white p-2 shadow-sm">
+                              <div className="h-4 w-4 rounded-full bg-[#ecedef]" />
+                              <div className="h-2 w-[100px] rounded-lg bg-[#ecedef]" />
+                            </div>
+                            <div className="flex items-center space-x-2 rounded-md bg-white p-2 shadow-sm">
+                              <div className="h-4 w-4 rounded-full bg-[#ecedef]" />
+                              <div className="h-2 w-[100px] rounded-lg bg-[#ecedef]" />
+                            </div>
+                          </div>
+                        </div>
+                        <span className="block w-full p-2 text-center font-normal">
+                          System
+                        </span>
+                      </FormLabel>
+                    </FormItem>
                     <FormItem>
                       <FormLabel className="[&:has([data-state=checked])>div]:border-primary">
                         <FormControl>

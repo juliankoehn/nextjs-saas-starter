@@ -76,3 +76,23 @@ export const deletePersonalAccount = async () => {
     throw new InternalServerError("Something went wrong");
   }
 };
+
+export const updateTheme = async (theme: string) => {
+  const session = await getPageSession();
+  if (!session) {
+    throw new UnauthorizedError();
+  }
+
+  await db.user.update({
+    where: {
+      id: session.user.userId,
+    },
+    data: {
+      theme,
+    },
+  });
+
+  revalidatePath("/");
+
+  return;
+};
