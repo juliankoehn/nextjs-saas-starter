@@ -53,15 +53,15 @@ License under the [MIT License](LICENSE).
   - [x] Change Name
   - [x] Delete Project
     - [ ] Restrict Delete to Owner
-  - [ ] **Members**
+  - [x] **Members**
     - [x] Add
       - [x] Create Invitation
-        - [ ] Send Email
+        - [x] Send Email
       - [x] Accept Invitation
       - [x] Remove Invitation
     - [x] Remove
-      - [ ] Self-remove only if not Owner
-    - [ ] Change Role
+      - [x] Self-remove only if not Owner
+    - [x] Change Role
 - [ ] **Billing**
 
 ## Docker Compose
